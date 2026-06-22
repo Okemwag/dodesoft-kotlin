@@ -36,10 +36,50 @@ tasks.test {
     useJUnitPlatform()
 }
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenKotlin") {
             from(components["kotlin"])
+
+            pom {
+                name.set("dodesoft-kotlin")
+                description.set("Official Kotlin SDK for the DodeSoft payment gateway")
+                url.set("https://github.com/Okemwag/dodesoft-kotlin")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("Okemwag")
+                        name.set("Gabriel Okemwa")
+                        email.set("gabrielokemwa83@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/Okemwag/dodesoft-kotlin.git")
+                    developerConnection.set("scm:git:ssh://github.com/Okemwag/dodesoft-kotlin.git")
+                    url.set("https://github.com/Okemwag/dodesoft-kotlin")
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Okemwag/dodesoft-kotlin")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
