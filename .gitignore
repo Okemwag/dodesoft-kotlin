@@ -1,0 +1,33 @@
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Kotlin
+*.class
+*.jar
+*.war
+*.ear
+*.aar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local properties
+local.properties
+gradle.properties.local
+
+# Publishing secrets
+*.env
+publish.properties
